@@ -3,11 +3,11 @@ import cors from 'cors';
 import routes from './src/routes.js';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:8080'
 }));
 app.use(express.json());
 
