@@ -58,7 +58,7 @@ router.put('/api/items/:id', (req, res) => {
 router.delete('/api/items/:id', (req, res) => {
     const id = req.params.id;
     const sql = 'DELETE FROM items WHERE id = ?';
-    db.run(sql, [id], function (err) { // ✅ diperbaiki di sini
+    db.run(sql, [id], function (err) { 
         if (err) return res.status(500).json({ error: err.message });
         if (this.changes === 0) {
             res.status(404).json({ error: 'Barang tidak ditemukan' });
