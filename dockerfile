@@ -9,6 +9,8 @@ RUN npm install
 
 COPY . .
 
+RUN mkdir -p /app/src
+
 # Jalankan server
 EXPOSE 5000
 
