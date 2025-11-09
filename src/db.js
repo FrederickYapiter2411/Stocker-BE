@@ -12,11 +12,11 @@ db.serialize(() => {
     db.run(`
         CREATE TABLE IF NOT EXISTS items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
+            nama TEXT NOT NULL,
             kategori TEXT NOT NULL,
-            quantity INTEGER NOT NULL,
+            stok INTEGER NOT NULL,
             harga INTEGER NOT NULL,
-            description TEXT
+            deskripsi TEXT
         )
     `);
 });

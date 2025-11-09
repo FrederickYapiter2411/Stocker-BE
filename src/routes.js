@@ -33,13 +33,13 @@ router.get('/api/items/:id', (req, res) => {
 });
 
 router.post('/api/items', (req, res) => {
-    const { name, kategori, quantity, harga, description } = req.body;
-    if (!name || !kategori || typeof quantity !== 'number' || typeof harga !== 'number') {
+    const { nama, kategori, stok, harga, deskripsi } = req.body;
+    if (!nama || !kategori || typeof stok !== 'number' || typeof harga !== 'number') {
         return res.status(400).json({ error: 'Data tidak lengkap' });
     }
 
-    const sql = 'INSERT INTO items (name, kategori, quantity, harga, description) VALUES (?, ?, ?, ?, ?)';
-    db.run(sql, [name, kategori, quantity, harga, description || ''], function (err) {
+    const sql = 'INSERT INTO items (nama, kategori, stok, harga, deskripsi) VALUES (?, ?, ?, ?, ?)';
+    db.run(sql, [nama, kategori, stok, harga, deskripsi || ''], function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -50,14 +50,14 @@ router.post('/api/items', (req, res) => {
 
 router.put('/api/items/:id', (req, res) => {
     const id = req.params.id;
-    const { name, kategori, quantity, harga, description } = req.body;
+    const { nama, kategori, stok, harga, deskripsi } = req.body;
 
-    if (!id || !name) {
-        return res.status(400).json({ error: 'ID dan name diperlukan' });
+    if (!id || !nama) {
+        return res.status(400).json({ error: 'ID dan nama diperlukan' });
     }
 
-    const sql = 'UPDATE items SET name = ?, kategori = ?, quantity = ?, harga = ?, description = ? WHERE id = ?';
-    db.run(sql, [name, kategori, quantity, harga, description || '', id], function (err) {
+    const sql = 'UPDATE items SET nama = ?, kategori = ?, stok = ?, harga = ?, deskripsi = ? WHERE id = ?';
+    db.run(sql, [nama, kategori, stok, harga, deskripsi || '', id], function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
