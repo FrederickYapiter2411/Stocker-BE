@@ -9,8 +9,6 @@ RUN npm install
 
 COPY . .
 
-RUN touch database.sqlite
-
 # Jalankan server
 EXPOSE 5000
 
