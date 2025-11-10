@@ -33,13 +33,14 @@ router.get('/api/items/:id', (req, res) => {
 });
 
 router.post('/api/items', (req, res) => {
-    const { nama, kategori, stok, harga, deskripsi } = req.body;
-    if (!nama || !kategori || typeof stok !== 'number' || typeof harga !== 'number') {
+    const { name, kategori, quantity, harga, deskripsi } = req.body;
+    console.log(req.body);
+    if (!name || !kategori || typeof quantity !== 'number' || typeof harga !== 'number') {
         return res.status(400).json({ error: 'Data tidak lengkap' });
     }
 
     const sql = 'INSERT INTO items (nama, kategori, stok, harga, deskripsi) VALUES (?, ?, ?, ?, ?)';
-    db.run(sql, [nama, kategori, stok, harga, deskripsi || ''], function (err) {
+    db.run(sql, [name, kategori, quantity, harga, deskripsi || ''], function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
